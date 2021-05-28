@@ -8,7 +8,7 @@ jobs:
     - name: Build the Docker image
       env:
         img: this-image
-        tag: $(date +%s)
       run: |
+        tag=$(date +%s)
         docker build . -t ${img}:${tag}
         docker run --rm -i ${img}:${tag} npm run lint
