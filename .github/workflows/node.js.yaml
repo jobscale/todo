@@ -28,4 +28,3 @@ jobs:
         cache: 'npm'
     - run: npm i && npm ls --depth 0
     - run: npm run lint
-    - run: npm test
