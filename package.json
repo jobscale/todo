@@ -92,6 +92,7 @@
   },
   "scripts": {
     "start": "concurrently --kill-others --names \"server,compiler\" \"NODE_ENV=development babel-node scripts/start.js\" \"npm run watch_relay\"",
+    "container": "NODE_ENV=development babel-node scripts/start.js",
     "lint": "eslint .",
     "build": "node scripts/build.js",
     "serve": "serve -s build",

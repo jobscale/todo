@@ -7,4 +7,4 @@ RUN chown -R node. .
 USER node
 RUN npm i && npm run lint && npm run build
 EXPOSE 3000
-CMD ["npm", "start"]
+CMD ["npm", "run", "container"]
