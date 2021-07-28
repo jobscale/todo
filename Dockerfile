@@ -6,6 +6,6 @@ RUN rm -fr /var/lib/apt/lists/*
 RUN echo fs.inotify.max_user_watches=524288 | tee -a /etc/sysctl.conf
 COPY . .
 RUN rm -fr /var/www/html && ln -sfn $(pwd)/build /var/www/html
-RUN chown -R nginx. .
-USER nginx
+RUN chown -R www-data. .
+USER www-data
 RUN rm -f package-lock.json && npm i && npm run lint && npm run build
