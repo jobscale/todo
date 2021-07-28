@@ -9,6 +9,5 @@ jobs:
       env:
         img: this-image
       run: |
-        tag=$(date +%s)
+        tag=$(date +%s%3N)
         docker build . -t ${img}:${tag}
-        docker run --rm -i ${img}:${tag} npm run lint
