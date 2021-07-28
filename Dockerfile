@@ -1,7 +1,7 @@
 FROM node:buster-slim
 WORKDIR /var/www
 ENV DEBIAN_FRONTEND noninteractive
-RUN apt update && apt install -y nginx-extras
+RUN apt-get update && apt-get install -y nginx-extras
 RUN rm -fr /var/lib/apt/lists/*
 RUN echo fs.inotify.max_user_watches=524288 | tee -a /etc/sysctl.conf
 COPY . .
