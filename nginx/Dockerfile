@@ -1,9 +1,9 @@
-FROM node:buster-slim as builder
+FROM node:lts-buster-slim as builder
 WORKDIR /home/node
 COPY . .
 RUN chown -R node. .
 USER node
-RUN rm -f package-lock.json && npm i && npm run lint && npm run build
+RUN npm i --legacy-peer-deps && npm run lint && npm run build
 
 FROM nginx:alpine
 WORKDIR /usr/share/nginx
