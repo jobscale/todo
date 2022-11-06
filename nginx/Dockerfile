@@ -1,13 +1,11 @@
-FROM node:lts-buster-slim as builder
+FROM node:lts-buster as builder
 WORKDIR /home/node
-COPY . .
-RUN chown -R node. .
+COPY --chown=node:staff . .
 USER node
 RUN npm i --legacy-peer-deps && npm run lint && npm run build
 
-FROM nginx:alpine
+FROM nginx:mainline
 WORKDIR /usr/share/nginx
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY default.conf /etc/nginx/conf.d/default.conf
-COPY --from=builder /home/node/build html
-RUN chown -R nginx. .
+COPY --from=builder --chown=nginx:staff /home/node/build html
